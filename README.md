@@ -5,6 +5,8 @@
 - php artisan key:generate
 - php artisan migrate
 - php artisan serve
+- crear la base de datos "cinema"
+- editar .env con los datos para la conexion de la BASE De datos
 
 - ir a /home (pantalla principal)
 
