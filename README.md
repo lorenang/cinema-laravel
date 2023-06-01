@@ -76,3 +76,49 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## DETALLES TECNICOS A REALIZAR/MODIFICAR
+## PELICULA
+- Una vez creada la pelicula, ver en un modal sus datos y editarlos, ademas quiero agregar 1 a n actores con solo seleccionarlo y removerlos con un boton (rojo, que tenga una X). 
+
+- Hay muchos actores asi que quiero que sea facil de buscar.
+
+- Realizar con AJAX
+- El buscador debe ser un select2
+
+Se desea que:
+- Cuando selecciono un actor se suma a la pelicula.
+- Cuando presiono en la X se elimina ese actor de la pelicula.
+- Un actor agregado desaparece de la lista de busqueda.
+- No puedo agregar dos veces el mismo actor (por ejemplo intentando desde dos pestañas diferentes al mismo tiempo).
+- Si no puse alguno de los datos requeridos para la pelicula no me permite guardar la edicion pero los actores si se guardaron.
+
+## ACTORES
+- Una vez creado un actor, ver en un modal sus datos y editarlos, ademas me resulta mas facil entrar en un actor y agregarle sus peliculas.
+- Quiero agregar 1 a n peliculas a un actor con solo seleccionarla y removerlas con un boton (rojo, que tenga una X). 
+
+- Hay muchas peliculas asi que quiero que sea facil de buscar.
+
+- Realizar con Livewire
+- El buscador debe ser un select2
+
+Se desea que:
+- Cuando selecciono una pelicula se suma a la pelicula.
+- Cuando presiono en la X se elimina la pelicula del actor
+- Una pelicula agregada desaparece de la lista de busqueda.
+- No puedo agregar dos veces la misma pelicula (por ejemplo intentando desde dos pestañas diferentes al mismo tiempo).
+- Si no puse alguno de los datos requeridos para el actor no me permite guardar la edicion pero las peliculas si se guardaron.
+
+## ADEMAS
+- La pantalla de peliculas tarda demasiado en cargar y ya no encuentro ninguna pelicula ni actor!!!
+
+- El cliente necesita paginado en sus listados de actores y peliculas y al menos un filtro por nombre.
+
+- Realizar uno con AJAX Y otro con livewire
+- Le dariamos mejor experiencia de usuario si el buscador fuera automatico con un debouncer (https://www.freecodecamp.org/espanol/news/curso-debounce-javascript-como-hacer-que-tu-js-espere/) no?
+
+Se desea que:
+- Las listas estan correctamente paginadas y puedo navegarlo en el footer o header (o ambos)
+- Si busco y me muevo en la paginacion me busca en la lista paginada y no desaparecen los filtros al moverme entre paginas
+- La busqueda recien comienza luego de tres letras escritas
