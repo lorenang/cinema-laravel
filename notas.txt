@@ -1,0 +1,240 @@
+Actividades
+A pesar de que las palabras MVC ya no sirven para definir la estructura del proyecto, debido a la gran cantidad de capas extra que se agregaron en la complejidad de las aplicaciones, ya que Modelo es solo una parte de la estructura de App, Controller es una parte de Http junto a Middleware, request, routes. Views es una parte de Resources... Las siguientes actividades deben ser realizadas utilizando una estructura de Modelo-Vista-Controlador, un recurso didáctico un poco antiguo que podrían revisar si es que se les escapa algún concepto es este https://styde.net/laravel-5/
+
+Usted dispondrá de 48 horas para entregar o hacer lo mayor posible de las siguientes tareas.
+- Crear las migraciones de las siguientes tablas: -> https://laravel.com/docs/7.x/migrations
+Película: Año Titulo Duración Sinopsis Imagen ActorPrincipalID
+Actor: Nombre FechaNacimiento
+
+- Crear las relaciones película-actor y actor-película -> https://laravel.com/docs/7.x/eloquent-relationships
+
+- Crear el CRUD de los mismos utilizando eloquent para el manejo de los datos y guardarlos en MySQL -> https://laravel.com/docs/7.x/controllers#resource-controllers
+
+- Visualización de imagen de la película y el cargado de la misma desde el ABM (Desde local, no un link a una imagen).
+
+- Poder marcar las películas como favoritas y visualizarlo con AJAX.
+
+Extra:
+
+- Sencillo:
+Botones de clear data de los campos. Drag and Drop para las imágenes
+
+- Medio:
+buscador con sugerencias - hacer un endpoint de API que devuelva un JSON y le muestre al usuario sugerencias de lo que escribió o el listado de las películas o algo por el estilo ejemplo: https://darkville.tv/ o el de Netflix (puntos extra por este último).
+
+- Avanzado:
+Websockets - Abrir un websocket y probarlo contra http://www.websocket.org/echo.html
+
+Criterios a tener en cuenta
+*El proyecto deberia ser tan modular como sea posible. Es decir, las funciones de una persona deberian estar en PeliculaController y las de un usuario en UsuarioController, no mezcladas en el mismo archivo.
+
+*El naming de las funciones deberia ser segun funcionalidad y luego el modelo, si el nombre es autodescriptivo todavia mejor. Por ejemplo, si tengo una funcion para crear una persona y otra para crear una pelicula deberian llamarse crearPersona() y crearPelicula()
+
+Consejos
+Las aplicaciones se pueden hacer en cualquier orden, pero talvez seguir estos pasos te ayuden.
+
+*Crear las migraciones sus controladores, modelos y vistas.
+
+*Crear la relación en los modelos.
+
+*Crear las vistas que permitan al superusuario cargar los datos de la película
+
+*Crear la funcionalidad en el controlador para actualizar los datos.
+
+*Crear una vista donde el usuario visualice las películas y pueda darle al botón de "Favorito" (Muestre el cambio con AJAX sin necesidad de recargar la pantalla)
+
+*Crear una vista donde el usuario pueda ver su listado de películas favoritas.
+
+*Crear lo necesario para que el superusuario pueda editar y borrar películas.
+
+¿Como comienzo?
+Primero, piensa cual debería ser la estructura de tu aplicación (Primero estructura de datos de la base de datos, luego en que orden irían las pantallas). No hace falta crear usuarios ni roles, pero sí que las pantallas se diferencien de cual sería para cada uno.
+
+Luego piensa en las pantallas del CRUD de la película/actor. El siguiente paso sería poder visualizar las películas como el usuario que visita la página y permitir elegir como favoritos. Ahora crea la pantalla para ver el listado de las películas favoritas.
+
+Por último, afina los detalles (drag & drop de imágenes, estética, etc.).
+
+-  laravel new cinema
+- cd cinema
+- php artisan serve
+
+   INFO  Server running on [http://127.0.0.1:8000].
+
+  Press Ctrl+C to stop the server
+
+> php artisan make:migration create_actor_table   
+> php artisan make:migration create_pelicula_table
+
+> php artisan migrate
+
+> php artisan make:controller actorController    
+
+> php artisan make:controller peliculasController
+
+> php artisan make:model Actor
+
+> php artisan make:model Pelicula
+
+
+la extensión .blade es el formato del motor de plantillas que usa Laravel para las vista de cualquier proyecto en general. El trabajo con el motor de plantillas blade le da más practicidad, dinamismo entre otras características al trabajo con vistas en Laravel.
+
+
+#https://www.tkserver.com/laravel-database-column-types/ PARA VER LOS TIPOS DE DATOS ACEPTADOS POR LARAVEL
+
+<!-- Laravel nos pide que en cada ejecución de un formulario le pasemos el método correspondiente en este caso PUT y un csrf_token el cual Laravel lo genera automáticamente, solo debemos colocar {{ csrf_token() }} y Laravel hara el trabajo.
+El csrf_token tiene las iniciales CSRF que sinifica Cross-site Request Forgery o en español Falsificación de Petición en Sitios Cruzados el cual Laravel utiliza como medidad de seguridad ante estos posibles ataques de tipo CSRF.
+mediante la directiva @include llamo al formulario prt.blade.php y basta con solo colocar la ruta y el nombre prt para que Laravel lo imprima en la vista -->    
+
+https://blog.nubecolectiva.com/como-crear-un-crud-con-laravel-10-y-bootstrap-5-parte-4/
+https://laravel.com/docs/10.x/queries#joins
+
+
+> php artisan migrate:fresh  
+
+  Dropping all tables .................................................................................. 158ms DONE
+
+   INFO  Preparing database.
+
+  Creating migration table .............................................................................. 29ms DONE
+
+   INFO  Running migrations.  
+
+  2014_10_12_000000_create_users_table .................................................................. 48ms DONE
+  2014_10_12_100000_create_password_reset_tokens_table .................................................. 60ms DONE
+  2019_08_19_000000_create_failed_jobs_table ............................................................ 44ms DONE
+  2019_12_14_000001_create_personal_access_tokens_table ................................................. 69ms DONE
+  2023_03_02_154710_create_actor_table .................................................................. 20ms DONE
+  2023_03_02_154843_create_peliculas_table ............................................................. 149ms DONE
+
+> php artisan migrate
+ *  History restored
+
+compact — Crea una matriz que contiene variables y sus valores 
+compact() toma un número variable de parámetros. Cada parámetro puede ser una cadena que contenga el nombre de la variable o una matriz de nombres de variables. La matriz puede contener otras matrices de nombres de variables dentro de ella; compact() lo maneja recursivamente
+Devuelve la matriz de salida con todas las variables agregadas.
+
+Componentes en Livewire
+Un componente en Livewire es cualquier elemento de la página en el que tenemos una presentación y una lógica del lado del servidor.
+
+Los componentes se usan desde las vistas de Laravel y son capaces de ser reutilizados de una manera sencilla a lo largo de toda una aplicación, encapsulando toda su complejidad dentro de una sencilla etiqueta.
+
+En Livewire se pueden hacer componentes sencillos y complejos pero casi siempre tendrán dos partes diferenciadas: controlador y vista, aunque también se pueden hacer componentes "inline", en los que se define tanto la lógica como la presentación dentro del controlador.
+
+El controlador
+Que contiene la lógica de PHP que sirve para definir las propiedades y acceder a datos que maneja este componente. En el controlador consiste en una clase, de programación orientada a objetos, donde podemos definir propiedades del componente por medio de propiedades públicas de la propia clase.
+
+https://uniwebsidad.com/libros/ajax/capitulo-10/la-libreria-jquery
+
+
+- Buscado de peliculas con AJAX. LISTO
+
+- Livewire que en la misma pantalla cree las peliculas y las visualize automaticamente sin tener que refrescar la pantalla. LISTO
+
+Asegurarme de hacer validators para laravel
+Y si puedo agregarle validators al livewire mejor
+Practica
+
+- Storages
+.Cree una página con un textarea y un botón para guardar.
+.Guardar el contenido del textarea cuando el usuario haga clic en guardar. Utilice localStorage e IndexedDB.
+.Agregue un botón de borrado para borrar el contenido guardado.
+
+-Drag and Drop
+.Agregue soporte para arrastrar y soltar para cargar archivos de texto.
+
+-WebSockets
+.Abra un socket web y pruébelo con este servicio http://www.websocket.org/echo.html
+Ya que el servicio ya no está disponible esta actividad queda descartada momentaneamente.
+
+-SVG
+.Crear una página web con un elemento SVG para mostrar un gráfico vectorial. Asegúrese de entender cuándo es mejor usar SVG en lugar de mapas de bits y viceversa.
+
+-Canvas
+.Crear una página web con un elemento Canvas. Al cargar la página, dibuje figuras geométricas básicas con colores y trazos aleatorios.
+Usando la API de Canvas, anime la posición de un rectángulo en la pantalla. Asegúrese de no usar setTimeout sino requestTimeFrame para realizar la animación.
+
+
+Es necesario configurar un evento drop en el objeto sobre el cual se soltará el objeto arrastrado. Este evento llamará una función global ondrop que recibe los datos del objeto arrastrado. 
+
+Normalmente, una aplicación incluirá una función de gestión de eventos dragover en el elemento objetivo del arrastre y esa función desactivará el comportamiento de arrastre por defecto del browser. Para añadir esta función necesita incluir una función global ondragover:
+
+puede que una aplicación quiera personalizar el estilo del elemento objetivo del arrastre para indicar visualmente que es una zona drag and drop. 
+
+los eventos dragstart y dragend no son activados cuando se arrastra un archivo al browser desde el SO.
+
+Procesar la acción de soltar [drop]
+El evento drop se ejecuta cuando el usuario suelta el o los archivos. En el siguiente manejador, si el navegador sorporta la interfaz DataTransferItemList (en-US) , el método getAsFile() (en-US) se utiliza para acceder cada fichero; de lo contrario la propiedad DataTransfer (en-US) de la interfaz files (en-US) es usada para acceder cada archivo.
+
+
+function dropHandler(ev) {
+  console.log('Fichero(s) arrastrados');
+
+  // Evitar el comportamiendo por defecto (Evitar que el fichero se abra/ejecute)
+  ev.preventDefault();
+
+  if (ev.dataTransfer.items) {
+    // Usar la interfaz DataTransferItemList para acceder a el/los archivos)
+    for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+      // Si los elementos arrastrados no son ficheros, rechazarlos
+      if (ev.dataTransfer.items[i].kind === 'file') {
+        var file = ev.dataTransfer.items[i].getAsFile();
+        console.log('... file[' + i + '].name = ' + file.name);
+      }
+    }
+  } else {
+    // Usar la interfaz DataTransfer para acceder a el/los archivos
+    for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+      console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+    }
+  }
+
+  // Pasar el evento a removeDragData para limpiar
+  removeDragData(ev)
+}
+
+Prevenir el comportamiento default de arrastrado en el browser
+El siguiente evento dragover llama a preventDefault() para deshabilitar (turn off) la respuesta estandar drag-and-drop del browser.
+
+function dragOverHandler(ev) {
+  console.log('File(s) in drop zone');
+
+  // Prevent default behavior (Prevent file from being opened)
+  ev.preventDefault();
+}
+
+
+La validación en Livewire debería ser similar a la validación de formulario estándar en Laravel. 
+Livewire proporciona una $rulespropiedad para establecer reglas de validación por componente y un $this->validate()método para validar las propiedades de un componente usando esas reglas.
+
+Si falla la validación, se lanza un estándar ValidationException(y Livewire lo captura), y el $errorsobjeto estándar está disponible dentro de la vista del componente. Debido a esto, cualquier código existente que tenga, probablemente un Blade incluido, para manejar la validación en el resto de su aplicación también se aplicará aquí.
+
+Validando con reglas fuera de la $rulespropiedad
+Si por alguna razón desea validar usando reglas distintas a las definidas en la $rulespropiedad, siempre puede hacerlo pasando las reglas directamente a los métodos validate()y .validateOnly()
+
+Si desea personalizar los mensajes de validación utilizados por un componente de Livewire, puede hacerlo con la $messagespropiedad.
+
+Si desea mantener los mensajes de validación de Laravel predeterminados, pero solo personalizar la :attributeparte del mensaje, puede especificar nombres de atributos personalizados utilizando la $validationAttributespropiedad.
+Puede sustituir la $messagespropiedad por el messages()método en el componente.
+
+Si no está utilizando la $rulespropiedad de validación global, puede pasar mensajes y atributos personalizados directamente a validate().
+
+tener en cuenta sobre las propiedades públicas antes de embarcarse en su viaje Livewire:
+
+Los nombres de propiedad no pueden entrar en conflicto con los nombres de propiedad reservados para Livewire (por ejemplo, ruleso messages)
+Los datos almacenados en propiedades públicas se hacen visibles para el JavaScript front-end. Por lo tanto, NO DEBE almacenar datos confidenciales en ellos.
+Las propiedades SOLO pueden ser tipos de datos compatibles con JavaScript ( string, int, array, boolean), O uno de los siguientes tipos de PHP: Stringable, Collection, DateTime, Model, EloquentCollection.
+
+Livewire también pone $this->fill()a su disposición un método para casos en los que tiene que establecer muchas propiedades y desea eliminar el ruido visual.
+
+Puede agregar wire:model a cualquier elemento que envíe un inputevento. Incluso elementos personalizados o bibliotecas de JavaScript de terceros.
+Los elementos comunes para usar wire:modelen incluyen:
+
+Etiqueta de elemento
+<input type="text">
+<input type="radio">
+<input type="checkbox">
+<select>
+<textarea>
+
+
+https://github.com/diarioprogramador/crud-con-laravel-8-y-livewire/blob/main/resources/views/livewire/form.blade.php
